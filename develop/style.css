@@ -1,3 +1,36 @@
+body{
+    font-family: "Poppins", sans-serif;
+}
+
+main {
+    margin: 1rem;
+    margin-top: 1.5rem;
+    min-height: 400px;
+}
+
 .hello {
-    background-color: blue;
-};
+    background-color: rgb(188, 203, 232);
+    padding: 1rem;
+    border-radius: .5rem;
+    margin-top: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+}
+
+/* .search-city {} */
+
+.search {
+    background-color: rgb(252, 232, 143);
+    min-height: 300px;
+    margin: 1.2rem;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+.city {
+    background-color: rgb(204, 206, 210);
+    min-height: 300px;
+    margin: 1.2rem;
+    border-radius: .5rem;
+    padding: 1rem;
+}

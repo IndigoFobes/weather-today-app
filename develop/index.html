@@ -5,22 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Today</title>
-    <!-- <link> font -->
-    <!-- <link> style api -->
+    <!-- Reset -->
+    <link rel="stylesheet" href="reset.css">
     <!-- Bootstrap -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&family=Poppins:wght@100;200;400;500;700&family=Uchen&display=swap" rel="stylesheet">
+    <!-- Custom css -->
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+    <!-- Page Header -->
     <header>
         <div class="container-fluid text-center">
-            <h1 class="hello">Hello</h1>
+            <h1 class="hello">Weather Dashboard</h1>
         </div>
     </header>
+
+    <main>
+        <!-- Search section -->
+        <div class="row search-city">
+            <div class="col col-lg-4 search">
+                <h2>Search</h2>
+            </div>
+            <!-- Chosen city -> Main weather display -->
+            <div class="col city">
+                <h2>Atlanta</h2>
+            </div>
+        </div>
+        <!-- For search history ul & 5-Day forecast -->
+        <div class="row">
+            <div class="col col-lg-4 search-history">
+                <!-- Empty div for now -->
+            </div>
+            <div class="col five-day">
+                <!-- Empty div for now-->
+            </div>
+        </div>
+    </main>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="script.js"></script>
 </body>
