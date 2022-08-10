@@ -34,3 +34,22 @@ main {
     border-radius: .5rem;
     padding: 1rem;
 }
+
+.search-history {
+    min-height: 300px;
+    margin: 1.2rem;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+.five-day {
+    min-height: 300px;
+    margin: 1.2rem;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+#five-blocks {
+    margin: 1rem;
+    
+}
