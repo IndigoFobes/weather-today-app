@@ -1,5 +1,6 @@
 // variables
 var searchFormEl = document.getElementById("search-form");
+var cityText = document.getElementById("city-text");
 
 //var url = "http://api.openweathermap.org/data/2.5/weather?q=calgary&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3";
 //fetch(url)
@@ -9,10 +10,24 @@ var searchFormEl = document.getElementById("search-form");
 // Define search api function
 function searchApi(query) {
 
+    // url before city input
     var cityQueryUrl = 'http://api.openweathermap.org/data/2.5/weather';
-
+    // url with user's chosen city
     cityQueryUrl = cityQueryUrl + '?q=' + query + '&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3';
-    console.log(cityQueryUrl);
+    console.log(query);
+
+    // Fetch to get data!
+    fetch(cityQueryUrl)
+        .then(function (res) {
+            if (!res.ok) {
+                throw res.json(); // Throw res.json anyways?
+            }
+            return res.json(); // Does json work like this on this api? 
+        })
+
+        .then (function (cityRes) {
+        cityText.textContent = cityRes.search.query;
+        })
 }
 
 // Function to handle form
