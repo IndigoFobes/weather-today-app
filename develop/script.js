@@ -7,6 +7,13 @@ var cityText = document.getElementById("city-text");
  //   .then(res => res.json())
  //   .then(data => console.log(data))
 
+// getParams
+function getParams() {
+    var searchParams = document.location.name
+    var query = searchParams;
+    console.log(query);
+}
+
 // Define search api function
 function searchApi(query) {
 
@@ -26,7 +33,7 @@ function searchApi(query) {
         })
 
         .then (function (cityRes) {
-        cityText.textContent = cityRes.search.query;
+            cityText.textContent = cityRes.name;
         })
 }
 
@@ -52,4 +59,5 @@ function handleSearchForm(event) {
 // Event listener on search button, which calls function to handle search form
 searchFormEl.addEventListener('click', handleSearchForm);
 
-
+// get the parameters
+getParams();
