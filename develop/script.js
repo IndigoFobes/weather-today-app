@@ -1,18 +1,11 @@
 // variables
 var searchFormEl = document.getElementById("search-form");
 var cityText = document.getElementById("city-text");
-
+var today = document.getElementById("today");
+var emoji =  String.fromCodePoint(0x1F324);
 //var url = "http://api.openweathermap.org/data/2.5/weather?q=calgary&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3";
-//fetch(url)
- //   .then(res => res.json())
- //   .then(data => console.log(data))
 
-// getParams
-function getParams() {
-    var searchParams = document.location.name
-    var query = searchParams;
-    console.log(query);
-}
+today.textContent = moment().format('MM.DD.YY');
 
 // Define search api function
 function searchApi(query) {
@@ -27,14 +20,16 @@ function searchApi(query) {
     fetch(cityQueryUrl)
         .then(function (res) {
             if (!res.ok) {
-                throw res.json(); // Throw res.json anyways?
+                throw res.json(); 
             }
-            return res.json(); // Does json work like this on this api? 
+            return res.json(); 
         })
 
+        // Print name of city on page
         .then (function (cityRes) {
-            cityText.textContent = cityRes.name;
+            cityText.textContent = cityRes.name + ' ' + emoji; // gonna define emoji
         })
+        
 }
 
 // Function to handle form
@@ -59,5 +54,3 @@ function handleSearchForm(event) {
 // Event listener on search button, which calls function to handle search form
 searchFormEl.addEventListener('click', handleSearchForm);
 
-// get the parameters
-getParams();
