@@ -3,8 +3,10 @@ var searchFormEl = document.getElementById("search-form");
 var cityText = document.getElementById("city-text");
 var today = document.getElementById("today");
 var emoji =  String.fromCodePoint(0x1F324); // for now, leave as is.
+var weatherStats = document.getElementById("stats");
 //var url = "http://api.openweathermap.org/data/2.5/weather?q=calgary&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3";
 
+// Show today's date.
 today.textContent = moment().format('MM.DD.YY');
 
 // Define search api function
@@ -28,9 +30,13 @@ function searchApi(query) {
         // Print name of city on page
         .then (function (cityRes) {
             cityText.textContent = cityRes.name + ' ' + emoji; // gonna define emoji
-            console.log(cityRes.main.temp);
+            
+            var tempItem = document.createElement("li");
+            tempItem.textContent = "Temp: " + cityRes.main.temp + '°';
+            weatherStats.appendChild(tempItem);
         })
         
+    
 }
 
 // Function to handle form
