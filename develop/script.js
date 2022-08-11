@@ -7,6 +7,13 @@ var searchFormEl = document.getElementById("search-form");
  //   .then(data => console.log(data))
 
 // Define search api function
+function searchApi(query) {
+
+    var cityQueryUrl = 'http://api.openweathermap.org/data/2.5/weather';
+
+    cityQueryUrl = cityQueryUrl + '?q=' + query + '&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3';
+    console.log(cityQueryUrl);
+}
 
 // Function to handle form
 function handleSearchForm(event) {
