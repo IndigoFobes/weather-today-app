@@ -31,9 +31,19 @@ function searchApi(query) {
         .then (function (cityRes) {
             cityText.textContent = cityRes.name + ' ' + emoji; // gonna define emoji
             
+            // Add temp info
             var tempItem = document.createElement("li");
             tempItem.textContent = "Temp: " + cityRes.main.temp + '°';
             weatherStats.appendChild(tempItem);
+
+            // Add wind info
+            var windItem = document.createElement("li");
+            windItem.textContent = "Wind: " + cityRes.wind.speed + "MPH";
+            weatherStats.appendChild(windItem);
+
+            // Add humidity info
+
+            // Add UV index
         })
         
     
