@@ -2,7 +2,7 @@
 var searchFormEl = document.getElementById("search-form");
 var cityText = document.getElementById("city-text");
 var today = document.getElementById("today");
-var emoji =  String.fromCodePoint(0x1F324);
+var emoji =  String.fromCodePoint(0x1F324); // for now, leave as is.
 //var url = "http://api.openweathermap.org/data/2.5/weather?q=calgary&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3";
 
 today.textContent = moment().format('MM.DD.YY');
@@ -13,8 +13,8 @@ function searchApi(query) {
     // url before city input
     var cityQueryUrl = 'http://api.openweathermap.org/data/2.5/weather';
     // url with user's chosen city
-    cityQueryUrl = cityQueryUrl + '?q=' + query + '&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3';
-    console.log(query);
+    cityQueryUrl = cityQueryUrl + '?q=' + query + '&units=imperial&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3';
+    console.log(cityQueryUrl);
 
     // Fetch to get data!
     fetch(cityQueryUrl)
@@ -28,6 +28,7 @@ function searchApi(query) {
         // Print name of city on page
         .then (function (cityRes) {
             cityText.textContent = cityRes.name + ' ' + emoji; // gonna define emoji
+            console.log(cityRes.main.temp);
         })
         
 }
