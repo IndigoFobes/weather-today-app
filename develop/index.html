@@ -29,7 +29,14 @@
         <!-- Search section -->
         <div class="row search-city">
             <div class="col col-lg-4 search">
-                <h2>Search</h2>
+                <h2>Search for a city</h2>
+                <!-- Search bar! -->
+                <form id="search-form">
+                    <div class="input-group">
+                        <input type="search" id="search-input" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <button type="button" class="btn btn-outline-primary">search</button>
+                    </div>
+                </form>
             </div>
             <!-- Chosen city -> Main weather display -->
             <div class="col city">
@@ -44,19 +51,19 @@
             <div class="col five-day">
                 <!-- Div for five containers -->
                 <div class="row row-cols-5 five-day text-center" id="five-blocks">
-                    <div class="col">
+                    <div class="col day">
                         <h4>Monday</h4>
                     </div>
-                    <div class="col">
+                    <div class="col day">
                         <h4>Tuesday</h4>
                     </div>
-                    <div class="col">
+                    <div class="col day">
                         <h4>Wednesday</h4>
                     </div>
-                    <div class="col">
+                    <div class="col day">
                         <h4>Thursday</h4>
                     </div>
-                    <div class="col">
+                    <div class="col day">
                         <h4>Friday</h4>
                     </div>
                 </div>
