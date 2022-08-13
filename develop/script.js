@@ -37,19 +37,16 @@ function searchApi(query) {
             cityText.textContent = cityRes.name + ' ' + emoji; // gonna define emoji
             
             // Add temp info
-            var tempItem = document.createElement("li");
+            var tempItem = document.getElementById("temp-item");
             tempItem.textContent = "Temp: " + cityRes.main.temp + '°';
-            weatherStats.appendChild(tempItem);
 
             // Add wind info
-            var windItem = document.createElement("li");
+            var windItem = document.getElementById("wind-item");
             windItem.textContent = "Wind: " + cityRes.wind.speed + " mph";
-            weatherStats.appendChild(windItem);
 
             // Add humidity info
-            var humidItem = document.createElement("li");
+            var humidItem = document.getElementById("humid-item");
             humidItem.textContent = "Humidity: " + cityRes.main.humidity + "%";
-            weatherStats.appendChild(humidItem);
 
             // lat and lon
             var lat = cityRes.coord.lat;
@@ -72,27 +69,25 @@ function searchApi(query) {
         // Print UV info on page
         .then (function (print) {
             // add UV info
-            var UvItem = document.createElement("li");
+            var UvItem = document.getElementById("uv-item");
             uviValue = print.value;
             UvItem.textContent = "UV index: " + uviValue;
-            weatherStats.appendChild(UvItem);
-            UvItem.setAttribute('id', 'uviColor');
 
             // color of UV index
             if (uviValue < 3) {
-                uviColor.setAttribute('style', 'background-color: #78DA7B; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+                UvItem.setAttribute('style', 'background-color: #78DA7B; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
             }
             else if (uviValue >= 3 && uviValue < 6) {
-                uviColor.setAttribute('style', 'background-color: #EFE336; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+                UvItem.setAttribute('style', 'background-color: #EFE336; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
             }
             else if (uviValue >= 6 && uviValue < 8) {
-                uviColor.setAttribute('style', 'background-color: #EF9336; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+                UvItem.setAttribute('style', 'background-color: #EF9336; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
             }
             else if (uviValue >= 8 && uviValue < 11) {
-                uviColor.setAttribute('style', 'background-color: #CA5F22; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+                UvItem.setAttribute('style', 'background-color: #CA5F22; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
             }
             else {
-                uviColor.setAttribute('style', 'background-color: #EF3636; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+                UvItem.setAttribute('style', 'background-color: #EF3636; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
             }
         })
  
@@ -124,6 +119,8 @@ function handleSearchForm(event) {
         searchBarClear.value = '';
     }
 
+    // If there is already a city name in the grey box, clear it upon form submission
+   
 }
 
 // Event listener on search button, which calls function to handle search form
