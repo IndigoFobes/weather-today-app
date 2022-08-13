@@ -79,11 +79,20 @@ function searchApi(query) {
             UvItem.setAttribute('id', 'uviColor');
 
             // color of UV index
-            if (uviValue < 2) {
-                uviColor.setAttribute('style', 'background-color: green; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+            if (uviValue < 3) {
+                uviColor.setAttribute('style', 'background-color: #78DA7B; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+            }
+            else if (uviValue >= 3 && uviValue < 6) {
+                uviColor.setAttribute('style', 'background-color: #EFE336; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+            }
+            else if (uviValue >= 6 && uviValue < 8) {
+                uviColor.setAttribute('style', 'background-color: #EF9336; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+            }
+            else if (uviValue >= 8 && uviValue < 11) {
+                uviColor.setAttribute('style', 'background-color: #CA5F22; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
             }
             else {
-                uviColor.setAttribute('style', 'background-color: red; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+                uviColor.setAttribute('style', 'background-color: #EF3636; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
             }
         })
  
@@ -108,6 +117,12 @@ function handleSearchForm(event) {
 
     // Call search api function.
     searchApi (searchInputVal);
+
+    // Clear search bar
+    if (searchInputVal) {
+        var searchBarClear = document.getElementById("search-input");
+        searchBarClear.value = '';
+    }
 
 }
 
