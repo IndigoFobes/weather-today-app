@@ -73,33 +73,22 @@ function searchApi(query) {
         .then (function (print) {
             // add UV info
             var UvItem = document.createElement("li");
-            UvItem.textContent = "UV index: " + print.value;
+            uviValue = print.value;
+            UvItem.textContent = "UV index: " + uviValue;
             weatherStats.appendChild(UvItem);
+            UvItem.setAttribute('id', 'uviColor');
+
+            // color of UV index
+            if (uviValue < 2) {
+                uviColor.setAttribute('style', 'background-color: green; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+            }
+            else {
+                uviColor.setAttribute('style', 'background-color: red; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
+            }
         })
  
         })
 
-
-    
-
-
-    // Fetch to get uv data!
-    fetch(sunUrl)
-        .then(function (sunRes) {
-            if (!sunRes.ok) {
-                throw sunRes.json();
-            }
-            return sunRes.json();
-            
-        })
-        
-        // Print UV info on page
-        .then (function (print) {
-
-            // add UV info
-            var UvItem = document.createElement("li");
-            //UvItem.textContent = 
-        })
     
 }
 
