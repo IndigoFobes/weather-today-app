@@ -12,11 +12,16 @@ today.textContent = moment().format('MM.DD.YY');
 // Define search api function
 function searchApi(query) {
 
+    // My appid:
+    var APIkey = 'bfbbe0bd4a83635a0fc689eaf40b77c3';
+
     // url before city input
-    var cityQueryUrl = 'http://api.openweathermap.org/data/2.5/weather';
+    var cityQueryUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
+
     // url with user's chosen city
-    cityQueryUrl = cityQueryUrl + '?q=' + query + '&units=imperial&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3';
+    cityQueryUrl = cityQueryUrl + query + '&units=imperial&APPID=' + APIkey;
     console.log(cityQueryUrl);
+
 
     // Fetch to get data!
     fetch(cityQueryUrl)
@@ -38,14 +43,63 @@ function searchApi(query) {
 
             // Add wind info
             var windItem = document.createElement("li");
-            windItem.textContent = "Wind: " + cityRes.wind.speed + "MPH";
+            windItem.textContent = "Wind: " + cityRes.wind.speed + " mph";
             weatherStats.appendChild(windItem);
 
             // Add humidity info
+            var humidItem = document.createElement("li");
+            humidItem.textContent = "Humidity: " + cityRes.main.humidity + "%";
+            weatherStats.appendChild(humidItem);
 
-            // Add UV index
+            // lat and lon
+            var lat = cityRes.coord.lat;
+            var lon = cityRes.coord.lon;
+
+            // For UV: url before city input.
+            var sunUrl = "api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + APIkey;
+
+            sunUrl = "https://cors-anywhere.herokuapp.com/" + sunUrl;
+
+            // Fetch to get uv data!
+        fetch(sunUrl)
+        .then(function (sunRes) {
+            if (!sunRes.ok) {
+              throw sunRes.json();
+            }
+            return sunRes.json();
+        })
+    
+        // Print UV info on page
+        .then (function (print) {
+            // add UV info
+            var UvItem = document.createElement("li");
+            UvItem.textContent = "UV index: " + print.value;
+            weatherStats.appendChild(UvItem);
+        })
+ 
+        })
+
+
+    
+
+
+    // Fetch to get uv data!
+    fetch(sunUrl)
+        .then(function (sunRes) {
+            if (!sunRes.ok) {
+                throw sunRes.json();
+            }
+            return sunRes.json();
+            
         })
         
+        // Print UV info on page
+        .then (function (print) {
+
+            // add UV info
+            var UvItem = document.createElement("li");
+            //UvItem.textContent = 
+        })
     
 }
 
