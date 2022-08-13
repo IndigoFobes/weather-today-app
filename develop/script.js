@@ -4,6 +4,7 @@ var cityText = document.getElementById("city-text");
 var today = document.getElementById("today");
 var emoji =  String.fromCodePoint(0x1F324); // for now, leave as is.
 var weatherStats = document.getElementById("stats");
+var searchHistory = document.getElementById("search-history");
 //var url = "http://api.openweathermap.org/data/2.5/weather?q=calgary&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3";
 
 // Show today's date.
@@ -21,7 +22,6 @@ function searchApi(query) {
     // url with user's chosen city
     cityQueryUrl = cityQueryUrl + query + '&units=imperial&APPID=' + APIkey;
     console.log(cityQueryUrl);
-
 
     // Fetch to get data!
     fetch(cityQueryUrl)
@@ -113,13 +113,21 @@ function handleSearchForm(event) {
     // Call search api function.
     searchApi (searchInputVal);
 
-    // Clear search bar
+    // Clear search bar and move to search history
     if (searchInputVal) {
         var searchBarClear = document.getElementById("search-input");
         searchBarClear.value = '';
-    }
 
-    // If there is already a city name in the grey box, clear it upon form submission
+        // Move city to search history
+        var cityHistory = document.createElement("li");
+        cityHistory.textContent = searchInputVal;
+        searchHistory.appendChild(cityHistory);
+
+        // Give it an id for styling!
+        cityHistory.setAttribute('id', 'city-history');
+
+
+    }
    
 }
 
