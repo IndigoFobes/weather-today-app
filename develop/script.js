@@ -122,10 +122,13 @@ function handleSearchForm(event) {
         var cityHistory = document.createElement("li");
         cityHistory.textContent = searchInputVal;
         searchHistory.appendChild(cityHistory);
-
         // Give it an id for styling!
         cityHistory.setAttribute('id', 'city-history');
-
+        // Add click event!
+        cityHistory.addEventListener('click', function() {
+            console.log(searchInputVal);
+            searchApi(searchInputVal);
+        });
 
     }
    
