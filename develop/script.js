@@ -5,6 +5,7 @@ var today = document.getElementById("today");
 var emoji =  String.fromCodePoint(0x1F324); // for now, leave as is.
 var weatherStats = document.getElementById("stats");
 var searchHistory = document.getElementById("search-history");
+var cities = [];
 //var url = "http://api.openweathermap.org/data/2.5/weather?q=calgary&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3";
 
 // Show today's date.
@@ -34,7 +35,30 @@ function searchApi(query) {
 
         // Print name of city on page
         .then (function (cityRes) {
-            cityText.textContent = cityRes.name + ' ' + emoji; // gonna define emoji
+            cityText.textContent = cityRes.name;// gonna define emoji
+
+            // for icon
+            
+            /* if (cityRes.weather.main == 'Drizzle') {
+                icon = '09d';
+            } 
+            else if (cityRes.weather.main == 'Rain') {
+                icon = '10d';
+            }
+            else if (cityRes.weather.main == 'Snow') {
+                icon = '13d';
+            }
+            else if (cityRes.weather.main == 'Clear') {
+                icon = '01d';
+            }
+            else {
+                icon = '03d';
+            }
+
+            var iconUrl = 'http://openweathermap.org/img/wn/' + icon + '@2x.png';
+            var img = document.querySelector('img');
+            img.setAttribute('src', iconUrl); */
+            
             
             // Add temp info
             var tempItem = document.getElementById("temp-item");
@@ -129,10 +153,14 @@ function handleSearchForm(event) {
             console.log(searchInputVal);
             searchApi(searchInputVal);
         });
+        // Give it a data index #
+        
 
     }
    
 }
+   
+
 
 // Event listener on search button, which calls function to handle search form
 searchFormEl.addEventListener('click', handleSearchForm);

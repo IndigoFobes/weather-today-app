@@ -88,3 +88,8 @@ font-size: 1.5rem;
     padding: 0 3rem;
     margin: 1rem;
 }
+
+#city-history:hover {
+    background-color:rgb(204, 206, 210);
+    cursor: pointer;
+}
