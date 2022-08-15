@@ -93,3 +93,18 @@ font-size: 1.5rem;
     background-color:rgb(204, 206, 210);
     cursor: pointer;
 }
+
+#stored-city {
+    font-weight: 500;
+    font-size: 1.2rem;
+    background-color: rgb(188, 203, 232);
+    text-align: center;
+    border-radius: .2rem;
+    padding: 0 3rem;
+    margin: 1rem;
+}
+
+#stored-city:hover {
+    background-color:rgb(204, 206, 210);
+    cursor: pointer;
+}

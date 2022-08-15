@@ -22,6 +22,23 @@ var data = JSON.parse(localStorage.getItem('cities'))
 // Show today's date.
 today.textContent = moment().format('MM.DD.YY');
 
+console.log(data);
+
+// Put whatever items are already in local storage onto the page as search history
+for (i = 0; i < data.length; i++) {
+    var storedCity = document.createElement('li');
+    storedCity.textContent = data[i]; // Grabbing the localstorage data we've saved and parsed
+    // Append to ul
+    searchHistory.appendChild(storedCity);
+    // Give it an id for styling
+    storedCity.setAttribute('id', 'stored-city');
+    // Add click event
+    storedCity.addEventListener('click', function() {
+        console.log(newData);
+        searchApi(newData);
+    });
+}
+
 // Define search api function
 function searchApi(query) {
 
@@ -142,6 +159,7 @@ function handleSearchForm(event) {
     var newData = document.getElementById("search-input").value;
     console.log(newData);
 
+  
     // If no value is typed, console log an error.
     if (!newData) {
         console.error("Please type in a valid city.");
@@ -160,21 +178,6 @@ function handleSearchForm(event) {
        
         var searchBarClear = document.getElementById("search-input");
         searchBarClear.value = '';
-
-      /*  // for loop for the local storage data 
-        for (i = 0; i < data.length; i++) {
-            var storedCity = document.createElement('li');
-            storedCity.textContent = data[i]; // Grabbing the localstorage data we've saved and parsed
-            // Append to ul
-            searchHistory.appendChild(storedCity);
-            // Give it an id for styling
-            storedCity.setAttribute('id', 'stored-city');
-            // Add click event
-            storedCity.addEventListener('click', function() {
-                console.log(newData);
-                searchApi(newData);
-            });
-        } */
 
         // Move city to search history
         var cityHistory = document.createElement("li");
@@ -197,3 +200,17 @@ function handleSearchForm(event) {
 // Event listener on search button, which calls function to handle search form
 searchFormEl.addEventListener('click', handleSearchForm);
 
+/*  // for loop for the local storage data 
+        for (i = 0; i < data.length; i++) {
+            var storedCity = document.createElement('li');
+            storedCity.textContent = data[i]; // Grabbing the localstorage data we've saved and parsed
+            // Append to ul
+            searchHistory.appendChild(storedCity);
+            // Give it an id for styling
+            storedCity.setAttribute('id', 'stored-city');
+            // Add click event
+            storedCity.addEventListener('click', function() {
+                console.log(newData);
+                searchApi(newData);
+            });
+        } */
