@@ -151,8 +151,31 @@ function searchApi(query) {
                 UvItem.setAttribute('style', 'background-color: #EF3636; font-weight: 500; max-width: 130px; border-radius: .2rem; padding-left: .5rem');
             }
         })
+
+         // Forecast URL 
+        var forecastUrl = 'https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?q=';
+
+        forecastUrl = forecastUrl + query + '&units=imperial&cnt=6&APPID=' + APIkey;
+
+        // Fetch for five-day forecast
+        fetch (forecastUrl)
+            .then(function (yep) {
+                if (!yep.ok) {
+                    throw yep.json(); 
+                }
+                return yep.json(); 
+            })
+            // Print data to page
+            .then (function (printForecast) {
+                console.log(printForecast);
+            })
  
     })
+
+   
+
+
+
 
 }
 
