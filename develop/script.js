@@ -139,6 +139,7 @@ function handleSearchForm(event) {
 
     // Clear search bar and move to search history
     if (searchInputVal) {
+        save();
         var searchBarClear = document.getElementById("search-input");
         searchBarClear.value = '';
 
@@ -153,13 +154,22 @@ function handleSearchForm(event) {
             console.log(searchInputVal);
             searchApi(searchInputVal);
         });
-        // Give it a data index #
+        // Give it a data index # ?
         
+        
+
 
     }
    
 }
    
+// Local storage
+function save() {
+    var newData  = document.getElementById("search-input").value;
+    console.log(newData);
+}
+
+
 
 
 // Event listener on search button, which calls function to handle search form
