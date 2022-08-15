@@ -39,7 +39,7 @@ for (i = 0; i < data.length; i++) {
     storedCity.addEventListener('click', function(event) {
         var element = event.target;
         var index = element.getAttribute('data-index');
-    console.log(data[index]);
+    searchApi(data[index]);
         
         
 
