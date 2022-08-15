@@ -40,6 +40,9 @@ main {
     margin: 1.2rem;
     border-radius: .5rem;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .five-day {
@@ -107,4 +110,9 @@ font-size: 1.5rem;
 #stored-city:hover {
     background-color:rgb(204, 206, 210);
     cursor: pointer;
+}
+
+#search-header {
+    font-size: 1rem;
+    text-align: center;
 }
