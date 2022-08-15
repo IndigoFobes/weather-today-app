@@ -1,3 +1,5 @@
+//var url = "http://api.openweathermap.org/data/2.5/weather?q=calgary&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3";
+
 // variables
 var searchFormEl = document.getElementById("search-form");
 var cityText = document.getElementById("city-text");
@@ -5,8 +7,17 @@ var today = document.getElementById("today");
 var emoji =  String.fromCodePoint(0x1F324); // for now, leave as is.
 var weatherStats = document.getElementById("stats");
 var searchHistory = document.getElementById("search-history");
-var cities = [];
-//var url = "http://api.openweathermap.org/data/2.5/weather?q=calgary&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3";
+// Set empty array
+let cityArray
+if (localStorage.getItem('cities')) {
+    cityArray = JSON.parse(localStorage.getItem('cities'))
+} else {
+    cityArray = []; 
+}
+
+
+localStorage.setItem('cities', JSON.stringify(cityArray));
+var data = JSON.parse(localStorage.getItem('cities'))
 
 // Show today's date.
 today.textContent = moment().format('MM.DD.YY');
@@ -83,12 +94,12 @@ function searchApi(query) {
 
             // Fetch to get uv data!
         fetch(sunUrl)
-        .then(function (sunRes) {
-            if (!sunRes.ok) {
-              throw sunRes.json();
-            }
-            return sunRes.json();
-        })
+            .then(function (sunRes) {
+                if (!sunRes.ok) {
+                    throw sunRes.json();
+                }
+                return sunRes.json();
+            })
     
         // Print UV info on page
         .then (function (print) {
@@ -117,60 +128,71 @@ function searchApi(query) {
  
         })
 
-    
 }
+
+
 
 // Function to handle form
 function handleSearchForm(event) {
+
     //  Prevent default
     event.preventDefault();
 
     // Create a variable for user search input.
-    var searchInputVal = document.getElementById("search-input").value;
+    var newData = document.getElementById("search-input").value;
+    console.log(newData);
 
     // If no value is typed, console log an error.
-    if (!searchInputVal) {
+    if (!newData) {
         console.error("Please type in a valid city.");
         return;
     }
 
+    // push user input into local storage
+    cityArray.push(newData);
+    localStorage.setItem('cities', JSON.stringify(cityArray));
+
     // Call search api function.
-    searchApi (searchInputVal);
+    searchApi (newData);
 
     // Clear search bar and move to search history
-    if (searchInputVal) {
-        save();
+    if (newData) {
+       
         var searchBarClear = document.getElementById("search-input");
         searchBarClear.value = '';
 
+      /*  // for loop for the local storage data 
+        for (i = 0; i < data.length; i++) {
+            var storedCity = document.createElement('li');
+            storedCity.textContent = data[i]; // Grabbing the localstorage data we've saved and parsed
+            // Append to ul
+            searchHistory.appendChild(storedCity);
+            // Give it an id for styling
+            storedCity.setAttribute('id', 'stored-city');
+            // Add click event
+            storedCity.addEventListener('click', function() {
+                console.log(newData);
+                searchApi(newData);
+            });
+        } */
+
         // Move city to search history
         var cityHistory = document.createElement("li");
-        cityHistory.textContent = searchInputVal;
+        cityHistory.textContent = newData;
         searchHistory.appendChild(cityHistory);
         // Give it an id for styling!
         cityHistory.setAttribute('id', 'city-history');
         // Add click event!
         cityHistory.addEventListener('click', function() {
-            console.log(searchInputVal);
-            searchApi(searchInputVal);
+            console.log(newData);
+            searchApi(newData);
         });
-        // Give it a data index # ?
-        
-        
-
+        // Give it a data index # 
 
     }
    
 }
    
-// Local storage
-function save() {
-    var newData  = document.getElementById("search-input").value;
-    console.log(newData);
-}
-
-
-
 
 // Event listener on search button, which calls function to handle search form
 searchFormEl.addEventListener('click', handleSearchForm);
