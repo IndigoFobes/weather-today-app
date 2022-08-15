@@ -7,6 +7,7 @@ var today = document.getElementById("today");
 var emoji =  String.fromCodePoint(0x1F324); // for now, leave as is.
 var weatherStats = document.getElementById("stats");
 var searchHistory = document.getElementById("search-history");
+var button = document.getElementById("clear-history");
 // Set empty array
 let cityArray
 if (localStorage.getItem('cities')) {
@@ -16,13 +17,15 @@ if (localStorage.getItem('cities')) {
 }
 
 
+// Set up local storage key and value
 localStorage.setItem('cities', JSON.stringify(cityArray));
+// variable to reference later in code
 var data = JSON.parse(localStorage.getItem('cities'))
+
 
 // Show today's date.
 today.textContent = moment().format('MM.DD.YY');
 
-//console.log(data);
 
 // Put whatever items are already in local storage onto the page as search history
 for (i = 0; i < data.length; i++) {
@@ -39,14 +42,9 @@ for (i = 0; i < data.length; i++) {
     storedCity.addEventListener('click', function(event) {
         var element = event.target;
         var index = element.getAttribute('data-index');
-    searchApi(data[index]);
-        
-        
-
-
+        searchApi(data[index]);
         
 })
-
 }
 
 
@@ -154,10 +152,9 @@ function searchApi(query) {
             }
         })
  
-        })
+    })
 
 }
-
 
 
 // Function to handle form
@@ -195,17 +192,24 @@ function handleSearchForm(event) {
         searchHistory.appendChild(cityHistory);
         // Give it an id for styling!
         cityHistory.setAttribute('id', 'city-history');
-        // Add click event!
+        // Add click event for new items!
         cityHistory.addEventListener('click', function() {
             console.log(newData);
             searchApi(newData);
         });
-        // Give it a data index # 
 
     }
    
 }
    
+// Event listener for clear history button
+button.addEventListener('click', function() {
+    localStorage.clear()
+    while (searchHistory.firstChild) {
+        searchHistory.removeChild((searchHistory.firstChild))
+    }
+});
+
 
 // Event listener on search button, which calls function to handle search form
 searchFormEl.addEventListener('click', handleSearchForm);

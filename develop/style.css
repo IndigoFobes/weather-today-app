@@ -113,6 +113,22 @@ font-size: 1.5rem;
 }
 
 #search-header {
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: center;
+}
+
+#clear-history {
+    margin-top: 2rem;
+    background-color: white; /* Green */
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: .5rem;
+}
+
+#clear-history:hover {
+    background-color: rgb(204, 206, 210) ;
 }
