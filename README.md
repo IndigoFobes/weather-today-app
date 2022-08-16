@@ -13,6 +13,6 @@ The goal of this challenge is to create an application that shows the user a wea
 ![Screenshot](weather-screenshot.png)
 
 ## Deployed URL
-Click [here] () for the live URL.
+Click [here]() for the live URL.
 
-Click [here] (https://github.com/IndigoFobes/weather-today-app) for link to Github repository.
+Click [here](https://github.com/IndigoFobes/weather-today-app) for link to Github repository.
