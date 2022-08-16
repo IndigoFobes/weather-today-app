@@ -61,6 +61,41 @@ main {
     margin-left: .25rem;
 }
 
+#day-one-stats {
+    background-color: rgb(204, 206, 210);
+    border-radius: .5rem;
+    margin: .2rem;
+    padding: .5rem;
+}
+
+#day-two-stats {
+    background-color: rgb(204, 206, 210);
+    border-radius: .5rem;
+    margin: .2rem;
+    padding: .5rem;
+}
+
+#day-three-stats {
+    background-color: rgb(204, 206, 210);
+    border-radius: .5rem;
+    margin: .2rem;
+    padding: .5rem;
+}
+
+#day-four-stats {
+    background-color: rgb(204, 206, 210);
+    border-radius: .5rem;
+    margin: .2rem;
+    padding: .5rem;
+}
+
+#day-five-stats {
+    background-color: rgb(204, 206, 210);
+    border-radius: .5rem;
+    margin: .2rem;
+    padding: .5rem;
+}
+
 /* Search bar */
 .input-group {
     margin-top: 1.2rem;

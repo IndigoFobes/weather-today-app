@@ -8,7 +8,12 @@ var emoji =  String.fromCodePoint(0x1F324); // for now, leave as is.
 var weatherStats = document.getElementById("stats");
 var searchHistory = document.getElementById("search-history");
 var button = document.getElementById("clear-history");
-// Set empty array
+var dayOne = document.getElementById("day-one");
+var dayTwo = document.getElementById("day-two");
+var dayThree = document.getElementById("day-three");
+var dayFour = document.getElementById("day-four");
+var dayFive = document.getElementById("day-five");
+// Set empty array, if nothing is currently stored in localstorage
 let cityArray
 if (localStorage.getItem('cities')) {
     cityArray = JSON.parse(localStorage.getItem('cities'))
@@ -155,7 +160,7 @@ function searchApi(query) {
          // Forecast URL 
         var forecastUrl = 'https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?q=';
 
-        forecastUrl = forecastUrl + query + '&units=imperial&cnt=6&APPID=' + APIkey;
+        forecastUrl = forecastUrl + query + '&units=imperial&APPID=' + APIkey;
 
         // Fetch for five-day forecast
         fetch (forecastUrl)
@@ -167,8 +172,80 @@ function searchApi(query) {
             })
             // Print data to page
             .then (function (printForecast) {
+                // Day one
                 console.log(printForecast);
-            })
+                var date1 = printForecast.list[6].dt_txt; //6, 11, 19, 27, 35
+                console.log(date1);
+                dayOne.textContent = moment(date1).format('MM.DD.YY');
+                // For temp
+                var oneTemp = document.getElementById('day-one-temp');
+                oneTemp.textContent = "Temp: " + printForecast.list[6].main.temp + '°';
+                // For wind
+                var oneWind = document.getElementById('day-one-wind');
+                oneWind.textContent = "Wind: " + printForecast.list[6].wind.speed + " mph";
+                // For humidity
+                var oneHumid = document.getElementById('day-one-humidity');
+                oneHumid.textContent = "Humidity: " + printForecast.list[6].main.humidity + "%";
+                
+        
+
+                // Day two
+                var date2 = printForecast.list[11].dt_txt; //6, 11, 19, 27, 35
+                console.log(date2);
+                dayTwo.textContent = moment(date2).format('MM.DD.YY');
+                // For temp
+                var twoTemp = document.getElementById('day-two-temp');
+                twoTemp.textContent = "Temp: " + printForecast.list[11].main.temp + '°';
+                // For wind
+                var twoWind = document.getElementById('day-two-wind');
+                twoWind.textContent = "Wind: " + printForecast.list[11].wind.speed + " mph";
+                // For humidity
+                var twoHumid = document.getElementById('day-two-humidity');
+                twoHumid.textContent = "Humidity: " + printForecast.list[11].main.humidity + "%";
+
+                // Day three
+                var date3 = printForecast.list[19].dt_txt; //6, 11, 19, 27, 35
+                console.log(date3);
+                dayThree.textContent = moment(date3).format('MM.DD.YY');
+                // For temp
+                var threeTemp = document.getElementById('day-three-temp');
+                threeTemp.textContent = "Temp: " + printForecast.list[19].main.temp + '°';
+                // For wind
+                var threeWind = document.getElementById('day-three-wind');
+                threeWind.textContent = "Wind: " + printForecast.list[19].wind.speed + " mph";
+                // For humidity
+                var threeHumid = document.getElementById('day-three-humidity');
+                threeHumid.textContent = "Humidity: " + printForecast.list[19].main.humidity + "%";
+
+                // Day four
+                var date4 = printForecast.list[27].dt_txt; //6, 11, 19, 27, 35
+                console.log(date4);
+                dayFour.textContent = moment(date4).format('MM.DD.YY');
+                // For temp
+                var fourTemp = document.getElementById('day-four-temp');
+                fourTemp.textContent = "Temp: " + printForecast.list[27].main.temp + '°';
+                // For wind
+                var fourWind = document.getElementById('day-four-wind');
+                fourWind.textContent = "Wind: " + printForecast.list[27].wind.speed + " mph";
+                // For humidity
+                var fourHumid = document.getElementById('day-four-humidity');
+                fourHumid.textContent = "Humidity: " + printForecast.list[27].main.humidity + "%";
+
+                // Day five
+                var date5 = printForecast.list[35].dt_txt; //6, 11, 19, 27, 35
+                console.log(date5);
+                dayFive.textContent = moment(date5).format('MM.DD.YY');
+                // For temp
+                var fiveTemp = document.getElementById('day-five-temp');
+                fiveTemp.textContent = "Temp: " + printForecast.list[35].main.temp + '°';
+                // For wind
+                var fiveWind = document.getElementById('day-five-wind');
+                fiveWind.textContent = "Wind: " + printForecast.list[35].wind.speed + " mph";
+                // For humidity
+                var fiveHumid = document.getElementById('day-five-humidity');
+                fiveHumid.textContent = "Humidity: " + printForecast.list[35].main.humidity + "%";
+            });
+
  
     })
 
@@ -178,7 +255,6 @@ function searchApi(query) {
 
 
 }
-
 
 // Function to handle form
 function handleSearchForm(event) {
