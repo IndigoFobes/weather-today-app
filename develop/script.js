@@ -119,9 +119,7 @@ function searchApi(query) {
             var lon = cityRes.coord.lon;
 
             // For UV: url before city input.
-            var sunUrl = "api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + APIkey;
-
-            sunUrl = "https://cors-anywhere.herokuapp.com/" + sunUrl;
+            var sunUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + APIkey;
 
             // Fetch to get uv data!
         fetch(sunUrl)
@@ -158,7 +156,7 @@ function searchApi(query) {
         })
 
          // Forecast URL 
-        var forecastUrl = 'https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?q=';
+        var forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=';
 
         forecastUrl = forecastUrl + query + '&units=imperial&APPID=' + APIkey;
 
