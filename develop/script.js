@@ -1,4 +1,4 @@
-//var url = "http://api.openweathermap.org/data/2.5/weather?q=calgary&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3";
+//var url = "https://api.openweathermap.org/data/2.5/weather?q=calgary&APPID=bfbbe0bd4a83635a0fc689eaf40b77c3";
 
 // variables
 var searchFormEl = document.getElementById("search-form");
