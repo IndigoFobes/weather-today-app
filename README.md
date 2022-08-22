@@ -10,7 +10,7 @@ The goal of this challenge is to create an application that shows the user a wea
 5. The user is able to click on any city in the search history and view the weather breakdown again.
 
 ## Screenshot of Application
-![Screenshot](weather-screenshot.png)
+![Screenshot](weather-screenshot2.png)
 
 ## Deployed URL
 Click [here](https://indigofobes.github.io/weather-today-app/develop/) for the live URL.

@@ -41,8 +41,10 @@
             </div>
             <!-- Chosen city -> Main weather display -->
             <div class="col city">
-                <h2><span id="city-text"></span></h2>
-                <img/>
+                <div id="city-icon">
+                    <h2><span id="city-text"></span></h2>
+                    <img id='icon'/>
+                </div>
                 <span id="today"></span>
                 <ul id="stats">
                     <li id="temp-item"></li>
@@ -53,7 +55,7 @@
             </div>
         </div>
         <!-- For search history ul & 5-Day forecast -->
-        <div class="row">
+        <div class="row bottom-cont">
             <div class="col col-lg-4 search-history">
                 <h3 id="search-header">Search History</h3>
                 <ul id="search-history"></ul>
@@ -61,42 +63,57 @@
             </div>
             <div class="col five-day">
                 <!-- Div for five containers -->
-                <div class="row row-cols-5 five-day text-center" id="five-blocks">
-                    <div class="col day">
-                        <h4><span id="day-one"></span></h4>
-                        <ul id = "day-one-stats">
+                <div class="five-day text-center" id="five-blocks">
+                    <div class="day">
+                        <div class="forecast-icon">
+                            <h4><span class="forecast-date" id="day-one"></span></h4>
+                            <img id="icon1" class="fc-icon"/>
+                        </div>
+                        <ul class = "day-stats">
                             <li id="day-one-temp"></li>
                             <li id="day-one-wind"></li>
                             <li id="day-one-humidity"></li>
                         </ul>
                     </div>
-                    <div class="col day">
-                        <h4><span id="day-two"></span></h4>
-                        <ul id = "day-two-stats">
+                    <div class="day">
+                        <div class="forecast-icon">
+                            <h4><span class="forecast-date" id="day-two"></span></h4>
+                            <img id="icon2" class="fc-icon"/>
+                        </div>
+                        <ul class = "day-stats">
                             <li id="day-two-temp"></li>
                             <li id="day-two-wind"></li>
                             <li id="day-two-humidity"></li>
                         </ul>
                     </div>
-                    <div class="col day">
-                        <h4><span id="day-three"></span></h4>
-                        <ul id = "day-three-stats">
+                    <div class="day">
+                        <div class="forecast-icon">
+                            <h4><span class="forecast-date" id="day-three"></span></h4>
+                            <img id="icon3" class="fc-icon"/>
+                        </div>                        
+                        <ul class = "day-stats">
                             <li id="day-three-temp"></li>
                             <li id="day-three-wind"></li>
                             <li id="day-three-humidity"></li>
                         </ul>
                     </div>
-                    <div class="col day">
-                        <h4><span id="day-four"></span></h4>
-                        <ul id = "day-four-stats">
+                    <div class="day">
+                        <div class="forecast-icon">
+                            <h4><span class="forecast-date" id="day-four"></span></h4>
+                            <img id="icon4" class="fc-icon"/>
+                        </div>                        
+                        <ul class = "day-stats">
                             <li id="day-four-temp"></li>
                             <li id="day-four-wind"></li>
                             <li id="day-four-humidity"></li>
                         </ul>
                     </div>
-                    <div class="col day">
-                        <h4><span id="day-five"></span></h4>
-                        <ul id = "day-five-stats">
+                    <div class="day">
+                        <div class="forecast-icon">
+                            <h4><span class="forecast-date" id="day-five"></span></h4>
+                            <img id="icon5" class="fc-icon"/>
+                        </div>                        
+                        <ul class = "day-stats">
                             <li id="day-five-temp"></li>
                             <li id="day-five-wind"></li>
                             <li id="day-five-humidity"></li>

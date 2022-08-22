@@ -80,26 +80,13 @@ function searchApi(query) {
             cityText.textContent = cityRes.name;// gonna define emoji
 
             // for icon
-            
-            /* if (cityRes.weather.main == 'Drizzle') {
-                icon = '09d';
-            } 
-            else if (cityRes.weather.main == 'Rain') {
-                icon = '10d';
-            }
-            else if (cityRes.weather.main == 'Snow') {
-                icon = '13d';
-            }
-            else if (cityRes.weather.main == 'Clear') {
-                icon = '01d';
-            }
-            else {
-                icon = '03d';
-            }
+            console.log(cityRes.weather[0].icon);
+            var icon = cityRes.weather[0].icon;
+
 
             var iconUrl = 'http://openweathermap.org/img/wn/' + icon + '@2x.png';
             var img = document.querySelector('img');
-            img.setAttribute('src', iconUrl); */
+            img.setAttribute('src', iconUrl);
             
             
             // Add temp info
@@ -170,10 +157,12 @@ function searchApi(query) {
             })
             // Print data to page
             .then (function (printForecast) {
+                console.log(printForecast.list[6].weather[0].icon);
                 // Day one
                 console.log(printForecast);
                 var date1 = printForecast.list[6].dt_txt; //6, 11, 19, 27, 35
                 console.log(date1);
+
                 dayOne.textContent = moment(date1).format('MM.DD.YY');
                 // For temp
                 var oneTemp = document.getElementById('day-one-temp');
@@ -184,7 +173,11 @@ function searchApi(query) {
                 // For humidity
                 var oneHumid = document.getElementById('day-one-humidity');
                 oneHumid.textContent = "Humidity: " + printForecast.list[6].main.humidity + "%";
-                
+                // Icon
+                var icon1 = printForecast.list[6].weather[0].icon;
+                var iconUrl1 = 'http://openweathermap.org/img/wn/' + icon1 + '@2x.png';
+                var img1 = document.getElementById('icon1');
+                img1.setAttribute('src', iconUrl1);
         
 
                 // Day two
@@ -200,6 +193,11 @@ function searchApi(query) {
                 // For humidity
                 var twoHumid = document.getElementById('day-two-humidity');
                 twoHumid.textContent = "Humidity: " + printForecast.list[11].main.humidity + "%";
+                // Icon
+                var icon2 = printForecast.list[11].weather[0].icon;
+                var iconUrl2 = 'http://openweathermap.org/img/wn/' + icon2 + '@2x.png';
+                var img2 = document.getElementById('icon2');
+                img2.setAttribute('src', iconUrl2);
 
                 // Day three
                 var date3 = printForecast.list[19].dt_txt; //6, 11, 19, 27, 35
@@ -214,6 +212,11 @@ function searchApi(query) {
                 // For humidity
                 var threeHumid = document.getElementById('day-three-humidity');
                 threeHumid.textContent = "Humidity: " + printForecast.list[19].main.humidity + "%";
+                // Icon
+                var icon3 = printForecast.list[19].weather[0].icon;
+                var iconUrl3 = 'http://openweathermap.org/img/wn/' + icon3 + '@2x.png';
+                var img3 = document.getElementById('icon3');
+                img3.setAttribute('src', iconUrl3);
 
                 // Day four
                 var date4 = printForecast.list[27].dt_txt; //6, 11, 19, 27, 35
@@ -228,6 +231,11 @@ function searchApi(query) {
                 // For humidity
                 var fourHumid = document.getElementById('day-four-humidity');
                 fourHumid.textContent = "Humidity: " + printForecast.list[27].main.humidity + "%";
+                // Icon
+                var icon4 = printForecast.list[27].weather[0].icon;
+                var iconUrl4 = 'http://openweathermap.org/img/wn/' + icon4 + '@2x.png';
+                var img4 = document.getElementById('icon4');
+                img4.setAttribute('src', iconUrl4);
 
                 // Day five
                 var date5 = printForecast.list[35].dt_txt; //6, 11, 19, 27, 35
@@ -242,14 +250,17 @@ function searchApi(query) {
                 // For humidity
                 var fiveHumid = document.getElementById('day-five-humidity');
                 fiveHumid.textContent = "Humidity: " + printForecast.list[35].main.humidity + "%";
+                // Icon
+                var icon5 = printForecast.list[35].weather[0].icon;
+                var iconUrl5 = 'http://openweathermap.org/img/wn/' + icon5 + '@2x.png';
+                var img5 = document.getElementById('icon5');
+                img5.setAttribute('src', iconUrl5);
+
+    
             });
 
  
     })
-
-   
-
-
 
 
 }
@@ -306,6 +317,18 @@ button.addEventListener('click', function() {
         searchHistory.removeChild((searchHistory.firstChild))
     }
 });
+
+// Loop to clear empty divs in forecast
+/* for (i=0; i<5; i++) {
+    var forecastDate = document.querySelectorAll(".forecast-date");
+    var day = document.querySelectorAll(".day");
+    console.log(forecastDate[i].textContent);
+    if (!forecastDate.textContent) {
+        day[i].setAttribute('style', 'display: none');
+    }};
+    else if (forecastDate.textContent) {
+        day[i].setAttribute('style', 'display: ');
+    }}; */
 
 
 // Event listener on search button, which calls function to handle search form
