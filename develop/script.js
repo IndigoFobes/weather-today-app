@@ -84,7 +84,7 @@ function searchApi(query) {
             var icon = cityRes.weather[0].icon;
 
 
-            var iconUrl = 'http://openweathermap.org/img/wn/' + icon + '@2x.png';
+            var iconUrl = 'https://openweathermap.org/img/wn/' + icon + '@2x.png';
             var img = document.querySelector('img');
             img.setAttribute('src', iconUrl);
             
@@ -175,7 +175,7 @@ function searchApi(query) {
                 oneHumid.textContent = "Humidity: " + printForecast.list[6].main.humidity + "%";
                 // Icon
                 var icon1 = printForecast.list[6].weather[0].icon;
-                var iconUrl1 = 'http://openweathermap.org/img/wn/' + icon1 + '@2x.png';
+                var iconUrl1 = 'https://openweathermap.org/img/wn/' + icon1 + '@2x.png';
                 var img1 = document.getElementById('icon1');
                 img1.setAttribute('src', iconUrl1);
         
@@ -195,7 +195,7 @@ function searchApi(query) {
                 twoHumid.textContent = "Humidity: " + printForecast.list[11].main.humidity + "%";
                 // Icon
                 var icon2 = printForecast.list[11].weather[0].icon;
-                var iconUrl2 = 'http://openweathermap.org/img/wn/' + icon2 + '@2x.png';
+                var iconUrl2 = 'https://openweathermap.org/img/wn/' + icon2 + '@2x.png';
                 var img2 = document.getElementById('icon2');
                 img2.setAttribute('src', iconUrl2);
 
@@ -214,7 +214,7 @@ function searchApi(query) {
                 threeHumid.textContent = "Humidity: " + printForecast.list[19].main.humidity + "%";
                 // Icon
                 var icon3 = printForecast.list[19].weather[0].icon;
-                var iconUrl3 = 'http://openweathermap.org/img/wn/' + icon3 + '@2x.png';
+                var iconUrl3 = 'https://openweathermap.org/img/wn/' + icon3 + '@2x.png';
                 var img3 = document.getElementById('icon3');
                 img3.setAttribute('src', iconUrl3);
 
@@ -233,7 +233,7 @@ function searchApi(query) {
                 fourHumid.textContent = "Humidity: " + printForecast.list[27].main.humidity + "%";
                 // Icon
                 var icon4 = printForecast.list[27].weather[0].icon;
-                var iconUrl4 = 'http://openweathermap.org/img/wn/' + icon4 + '@2x.png';
+                var iconUrl4 = 'https://openweathermap.org/img/wn/' + icon4 + '@2x.png';
                 var img4 = document.getElementById('icon4');
                 img4.setAttribute('src', iconUrl4);
 
@@ -252,7 +252,7 @@ function searchApi(query) {
                 fiveHumid.textContent = "Humidity: " + printForecast.list[35].main.humidity + "%";
                 // Icon
                 var icon5 = printForecast.list[35].weather[0].icon;
-                var iconUrl5 = 'http://openweathermap.org/img/wn/' + icon5 + '@2x.png';
+                var iconUrl5 = 'https://openweathermap.org/img/wn/' + icon5 + '@2x.png';
                 var img5 = document.getElementById('icon5');
                 img5.setAttribute('src', iconUrl5);
 
